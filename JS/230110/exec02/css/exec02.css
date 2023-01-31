@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+*{margin:0; padding:0;}
+h2{display:none;}
+
+section{width: 1200px;}
+.bgimg{width: 1200px;}
+.main{
+  position: relative;
+}
+.main img {
+  position: absolute;
+}
+
+.main img:not(.bgimg){
+  display:none;
+}
+.embl{
+  top: 65px;
+  left: 100px; 
+  width:280px;
+}
+
+.bev1{
+  top:40px;
+  left:700px;
+  width:100px;
+}
+
+.tbev1{
+  top:20px;
+  left:555px;
+  width:135px;
+}
+
+.bev2{
+  top:130px;
+  left:640px;
+  width:160px;
+}
+
+.tbev2{
+  top:110px;
+  left:510px;
+  width: 130px;
+}
+
+.bev3{
+  top:160px;
+  left:710px;
+  width:220px;
+}
+
+.tbev3{
+  top:90px;
+  right:290px;
+  width:100px;
+}
+
+.badge{
+  top:5px;
+  right:170px;
+  width:80px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제) steve jobs</title>
+
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <!-- 제이쿼리 UI 라이브러리 -->
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+  <style>
+    .box{
+      border: 5px solid #000;
+      width: 600px;
+      height:334px;
+      position:relative;
+      overflow: hidden;
+    }
+
+    .pic{
+      width:400px;
+      position:absolute;
+      right:0;
+      bottom:-800px;
+  
+    }
+
+    .text{
+      position: absolute;
+      left:-999px;
+      top:100px;
+      width: 150px;
+    }
+  </style>
+
+  <script>
+    $(function(){
+      $('.text').animate({'left':'20px'},800);
+
+      $('.pic').animate({'bottom':'0px'},1000,);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="box">
+    <img src="./images/jobs_text.gif" alt="name" class="text">
+    <img src="./images/jobs.png" alt="jobs" class="pic">
+  </div>
+</body>
+</html>

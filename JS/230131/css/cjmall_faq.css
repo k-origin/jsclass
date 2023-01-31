@@ -1,0 +1,113 @@
+@charset "utf-8";
+
+*{margin:0; padding:0;}
+
+ol, ul, li {list-style: none;}
+
+a{text-decoration: none;}
+
+body{
+  font-family: '맑은 고딕', arial, sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+
+section{
+  width: 700px;
+  margin: 0 auto;
+  font-size: 16px;
+  position: relative;
+}
+
+fieldset{
+  border: 1px solid #640faf;
+  border-radius: 40px;
+  height: 40px;
+  margin: 10px auto;
+  position: relative;
+}
+
+legend {
+  display: none;
+}
+
+#search {
+  border: none;
+  height: 35px;
+  margin-top:3px;
+  width:600px;
+  position: absolute;
+  left: 50px;
+}
+
+fieldset > label{
+  color: #640faf;
+  position: absolute;
+  left:20px;
+  top: 11px;
+  font-size:17px;
+}
+
+section > h2{
+  font-size: 18px;
+  color: #111;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+section > a {
+  color: #767676;
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 75px;
+}
+
+.faqlist{
+  margin-top: 30px;
+  /* border-top: 1px solid #ccc; */
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.faqlist > dt {
+  line-height: 50px;
+  cursor: pointer;
+  border-top: 1px solid #ccc;
+  text-indent: 10px;
+}
+
+
+span.num {
+  font-weight: bold;
+  color:#640faf;
+}
+
+.faqlist > dt > i.fas{
+  position: absolute;
+  right: 5px;
+  font-size: 24px;
+  margin-top:14px;
+  color:#111;
+  
+}
+
+.faqlist > dd {
+  background-color: #fafafa;
+  padding: 12px 20px 11px;
+  font-size: 14px;
+  color: #4d4d4d;
+  display: none;
+}
+
+.faqlist > dd > span.red{
+  color: #f00;
+}
+
+.faqlist > dd > img{
+  width: 100%;
+}
+
+.act01{
+  transform: rotate(180deg);
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>제이쿼리_슬라이드예제</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css">
+
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  
+  <style>
+    *{margin:0; padding:0;}
+    ul, li, ol {list-style: none;}
+
+    .b_wrap{
+      margin:50px auto;
+      border: 3px solid #333;
+      width: 340px;
+      height: 378px;      
+      position: relative;
+      overflow:hidden;
+    }
+
+    .slide{
+      display: flex;
+      position: relative;
+    }
+
+    .c_btn{
+      display: flex;
+      position: absolute;
+      bottom:5px;
+      left: 40%;
+    }
+
+    .c_btn li{
+      width: 15px;
+      height: 15px;
+      background-color: #fff;
+      margin: 5px;
+      border-radius: 50%;      
+    }
+
+    .on{
+      width:40px !important;
+      border-radius: 10px !important;
+      background-color: rgba(141, 54, 3, 0.7) !important;
+    }
+
+    .p_s{
+      display: flex;
+      position: absolute;
+      bottom: 0;
+      right: 10px;
+      font-size: 20px;
+      color: #fff;
+    }
+
+    .p_s li {
+      padding: 5px;
+    }
+
+    .fa_c{
+      color:rgba(141, 54, 3, 0.7) !important;
+    }
+
+  </style>
+
+  <script>
+    $(function(){
+      //인덱스 값 저장
+      let n=$('.c_btn li').index();
+      console.log(n);
+
+      //콘트롤 버튼 클릭 시 인덱스 값 불러오기
+      $('.c_btn li').click(function(){
+        n=$(this).index();
+        console.log(n);
+
+      //이미지 너비 값
+      let img_w = -($('.slide img').width()*n);
+      console.log(img_w);
+
+      $('.slide').animate({'left':img_w}, 500);
+      
+      $('.c_btn li').removeClass('on');
+      $(this).addClass('on');    
+      });
+
+      //3초 자동 슬라이드
+      function autoSlide(n){
+        n = -(n*$('.slide img').width());
+        $('.slide').stop().animate({'left':n}, 500);
+      }
+
+      let Timer = setInterval(function(){
+        if(n==2){
+          n=0;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }else{
+          n++;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }
+        autoSlide(n);
+      }, 3000);
+
+      $('.c_btn').hover(function(){
+        clearInterval(Timer);
+      }, function(){
+        Timer = setInterval(function(){
+          if(n==2){
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on')
+          }else{
+            n++;
+            $('.c_btn li').removeClass('on');
+            $('.c_btn li').eq(n).addClass('on');
+          }
+          autoSlide(n);
+        }, 3000);
+      });
+
+
+      $('.fa-play').click(function(){
+        let Timer = setInterval(function(){
+        if(n==2){
+          n=0;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }else{
+          n++;
+          $('.c_btn li').removeClass('on');
+          $('.c_btn li').eq(n).addClass('on');
+        }
+        autoSlide(n);
+      }, 3000);
+
+      $('.fa-stop').removeClass('fa_c');
+      $(this).addClass('fa_c');
+
+    
+      
+      });
+
+      $('.fa-stop').click(function(){
+        clearInterval(Timer);
+        
+        $(this).addClass('fa_c');
+        $('.fa-play').removeClass('fa_c');
+
+      });
+
+
+
+
+    });
+  </script>
+
+</head>
+
+<body>
+  <article class="b_wrap">
+    <ul class="slide">
+      <li><a href="#" title=""><img src="./images/01-1.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images/02-1.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images/03-1.jpg" alt=""></a></li>
+    </ul>
+
+    <ul class="c_btn">
+      <li class="on">&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+    </ul>
+
+    <ul class="p_s">
+      <li><i class="fa-solid fa-play fa_c"></i></li>
+      <li><i class="fa-solid fa-stop"></i></li>
+    </ul>
+  </article>
+  
+</body>
+</html>

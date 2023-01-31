@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>에뛰드 모바일 토글</title>
+
+    <!-- 폰트어썸 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css">
+
+    <!-- 제이쿼리 라이브러리 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+
+    <link href="./css/exec2_etude.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <h1><a href="#" title="상단로고"><img src="./images/logo.png" alt="상단 로고"></a></h1>
+    
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <div id="toggle">
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+      </div>
+    </header>
+
+    <!-- 글로벌 내비게이션 -->
+    <nav class="gnb">
+      <ul>
+        <li><a href="#" title="">menu01</a></li>
+        <li><a href="#" title="">menu02</a></li>
+        <li><a href="#" title="">menu03</a></li>
+        <li><a href="#" title="">menu04</a></li>
+        <li><a href="#" title="">menu05</a></li>
+        <li><a href="#" title="">menu06</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- 슬라이드 3장 -->
+      <div class="s_box">
+        <ul class="slide">
+          <li><img src="./images/slide01_01.jpg" alt="슬라이드배너1"></li>
+          <li><img src="./images/slide02_02.jpg" alt="슬라이드배너2"></li>
+          <li><img src="./images/slide03_03.jpg" alt="슬라이드배너3"></li>
+        </ul>
+      </div>
+
+    </main>
+
+      <footer>
+        <address>copyright2022 &copy; 에뛰드 하우스 allrights reserved.</address>
+      </footer>
+  </div>
+
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <script>
+    $(function(){
+      //1. 토글버튼 변수
+      let t_btn = $('#toggle');
+      let t_n = 1;
+
+      t_btn.click(function(){
+        $(this).find('span').first().toggleClass('act01');
+        $(this).find('span').eq(1).toggleClass('act02');
+        $(this).find('span').last().toggleClass('act03');
+
+
+        //토글 버튼 클릭 시 wrap의 위치가 오른쪽으로부터 80% 위치에 배치
+        $('#wrap').toggleClass('wrap_pos');
+        
+        if(t_n==1){
+          $('body').css('overflow', 'hidden');
+          t_n=0;
+        }else{
+          $('body').css('overflow','scroll');
+          t_n=1;
+
+          $('body').css('overflow-x','hidden');
+        }
+
+        
+      });
+
+      //2. 스크롤값이 0보다 크면 
+      $(window).scroll(function(){
+        let sPos = $(this).scrollTop(); //브라우저의 세로 스크롤 값
+        console.log(sPos); //콘솔 모드에 출력
+
+        if(sPos>0){
+          $('#toggle').addClass('on');
+        }else{
+          //$('header').css('position', 'absolute');
+          $('#toggle').removeClass('on');
+        }
+      });
+
+      //헤더의 위치 속성을 fixed로 설정하여 위로 올라가지 않도록 한다
+
+      //슬라이드 함수
+      let slide = $('.slide');
+      let img_w = $('.slide img').width();
+      console.log(img_w);
+
+      $('.slide li:last-child').insertBefore('.slide li:first-child');
+      slide.css('margin-left',-img_w);
+      
+
+      //moveLeft
+      function moveLeft(){
+        slide.animate({'margin-left':-img_w*2}, 500, function(){
+          $('.slide li:first-child').insertAfter('.slide li:last-child');
+          slide.css('margin-left', -img_w);
+          console.log(img_w);
+        });
+      }
+
+      let Timer = setInterval(moveLeft, 3000);
+    });
+  </script>
+</body>
+</html>

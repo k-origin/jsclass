@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트로 슬라이드 구현하기</title>
+
+  <script src="./js/banner1.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+  <style>
+    * {margin:0; padding:0;}
+    ol, li, ul{list-style: none;}
+    h2{display:none;}
+    
+    
+    .slide-wrapper{
+      width:800px;
+      border: 3px solid #000;
+      margin:50px auto;
+      position: relative;
+      overflow:hidden;
+      box-sizing: border-box;
+    }
+    
+    .slide{
+      display: flex;
+      position:relative;
+      left:0;
+      transition:0.3s;
+    }
+
+    .slide img{
+      width:100%;
+      display:block;
+    }
+
+    a{
+      text-decoration: none;
+      position:absolute;
+      top:40%;
+      background-color: rgba(0,0,0,.7);
+      color:#fff;
+      display:block;
+      width: 40px;
+      height: 50px;
+      line-height:50px;
+      text-align: center;
+      padding: 5px;
+    }
+
+    a[title=이전]{
+      left:0;
+    }
+
+    a[title=다음]{
+      right:0;
+    }
+
+  </style>
+</head>
+<body>
+  <h2>자바스크립트로 슬라이드 구현하기</h2>
+  <article class="slide-wrapper">
+    <ul class="slide">
+      <li><img src="./images/tom1.jpg" alt="배너1"></li>
+      <li><img src="./images/tom2.jpg" alt="배너2"></li>
+      <li><img src="./images/tom3.jpg" alt="배너3"></li>
+      <li><img src="./images/tom4.jpg" alt="배너4"></li>
+      <li><img src="./images/tom5.jpg" alt="배너5"></li>
+      <li><img src="./images/tom6.jpg" alt="배너6"></li>
+    </ul>
+
+    <a href="#none;" title="이전" id="prev_btn" class="button"><i class="fas fa-angle-left"></i></a>
+    <a href="javascript:void(0);" title="다음" id="next_btn" class="button"><i class="fas fa-angle-right"></i></a>
+  </article>
+</body>
+</html>

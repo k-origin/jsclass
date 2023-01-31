@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exec_스타벅스</title>
+  <link rel="stylesheet" href="./css/exec02.css" type="text/css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+  <h2>스타벅스 실습 예제</h2>
+  <section>
+
+    <article class="main">
+      <img src="./images/bev_bg.jpg" alt="배경 이미지" class="bgimg">
+      <img src="./images/m_18_emblem.png" alt="embl" class="embl">
+      <img src="./images/bev1_cup.png" alt="bev1" class="bev1 img1">
+      <img src="./images/bev1_txt.png" alt="bev1" class="tbev1 img1">
+      <img src="./images/bev2_cup.png" alt="bev2" class="bev2 img2">
+      <img src="./images/bev2_txt.png" alt="bev2" class="tbev2 img2">
+      <img src="./images/bev3_cup.png" alt="bev3" class="bev3 img3">
+      <img src="./images/bev3_txt.png" alt="bev3" class="tbev3 img3">
+      <img src="./images/badge_main_autumn2.png" atl="배지" class="badge">
+    </article>
+  </section>
+
+
+  <script>
+    $(document).ready(function(){
+      
+      $('.embl').fadeIn(50);
+      $('.img1').delay(100).fadeIn();
+      $('.img2').delay(500).fadeIn();
+      $('.img3').delay(1100).fadeIn();
+
+    });
+  </script>
+</body>
+</html>

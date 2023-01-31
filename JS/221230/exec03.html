@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예제3 뉴스 탭</title>
+
+  <style>
+    * {margin:0; padding:0;}
+    ul, ol, li {list-style:none;}
+    a {text-decoration: none;}
+    h2{display:none;}
+
+    #news{
+      width:300px;
+      margin:10px;
+    }
+
+    h3{
+      float:left;
+    }
+
+    ul.tap{
+      display:flex;
+      float:right;
+    }
+
+    ul.tap li a{
+      color:#ccc;
+      font-size:13px;
+      font-weight:bold;
+      margin:0px 5px;
+      position:relative;
+    }
+
+    ul.tap li a::after{
+      content:"|";
+      position:absolute;
+      left: 33px;
+    }
+
+    ul.tap li:nth-child(2) a::after{
+      content:"|";
+      position:absolute;
+      left: 30px;
+    }
+
+    ul.tap li:nth-child(3) a::after{
+      content:"|";
+      position:absolute;
+      left: 30px;
+    }
+
+    ul.tap li:last-child a::after{
+      content:"";
+    }
+
+    div.tap_box{
+      clear:both;
+      padding-top:10px;
+      border-top:1px solid #ccc;
+      margin-top:10px;
+      position:absolute;
+      top:40px;
+    }
+
+    div.tap_box ul li{
+      width:300px;
+      padding:5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow:hidden;
+    }
+
+    div.tap_box ul li a {
+      color: #000;
+    }
+
+    #tb_potal{
+      display:none;
+    }
+
+    #tb_sns{
+      display:none;
+    }
+
+    #tb_ytb{
+      display:none;
+    }
+
+
+  </style>
+
+</head>
+<body>
+  <h2>예제 3 뉴스 탭 만들기</h2>
+  
+  <div id="news">
+  <h3>많이 본 뉴스</h3>  
+    <ul class="tap">
+      <li><a href="#" title="mbc" onclick="changeTap01()">MBC</a></li>
+      <li><a href="#" title="mbc" onclick="changeTap02()" id="open_potal">포털</a></li>
+      <li><a href="#" title="mbc" onclick="changeTap03()">SNS</a></li>
+      <li><a href="#" title="mbc" onclick="changeTap04()">유튜브</a></li>
+    </ul>
+
+
+    <div class="tap_box" id="tb_mbc">
+      <ul>
+        <li><a href="#" title="">'연쇄 살인범' 신상 공개‥31살 이기영</a></li>
+        <li><a href="#" title="">'제2경인고속 화재' 최초 화재 운전자 입건‥"펑 소리 나더니 불"</a></li>
+        <li><a href="#" title="">'신생아 4명 사망' 이대목동병원 의료진 무죄 확정</a></li>
+        <li><a href="#" title="">한 총리 "중국발 입국 전후 코로나 검사 의무화"‥단기비자 발급 제한</a></li>
+        <li><a href="#" title="">[World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+        <li><a href="#" title="">올해 소비자물가 5.1%↑‥외환위기 이후 최고치</a></li>
+        <li><a href="#" title="">미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+      </ul>
+    </div>
+
+    <div class="tap_box" id="tb_potal">
+      <ul>
+        <li><a href="#" title="">[단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+        <li><a href="#" title="">[단독] 운동선수·유흥업소 '선수'까지 뇌전증 연기</a></li>
+        <li><a href="#" title="">잿더미 된 차량 그대로‥이 시각 갈현고가교</a></li>
+        <li><a href="#" title="">"차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+        <li><a href="#" title="">윤 대통령 "우월한 전쟁 준비해야" vs 野 "'안보'는 전쟁 안나게 하는 것"</a></li>
+        <li><a href="#" title="">'연쇄 살인범' 신상 공개‥31살 이기영</a></li>
+        <li><a href="#" title="">[단독] 빌라왕 뒤의 빌라왕‥끝은 어디인가?</a></li>
+        <li><a href="#" title="">플라스틱 방화벽 타고 빠르게 확산</a></li>
+        <li><a href="#" title="">러, 또 대규모 공습‥벨라루스 "미사일 격추"</a></li>
+        <li><a href="#" title="">미국서 한국산 전기차도 '리스 차량'은 보조금</a></li>
+      </ul>
+    </div>
+
+    <div class="tap_box" id="tb_sns">
+      <ul>
+        <li><a href="#" title="">황희찬 역전골, 팬들이 뽑은 'KFA 올해의 골'</a></li>
+        <li><a href="#" title="">MBC, 가장 즐겨보는 뉴스 채널 1위</a></li>
+        <li><a href="#" title="">[World Now] 영면에 든 펠레‥예전 활약 영상</a></li>
+        <li><a href="#" title="">'축구 전설'로 남은 펠레‥암투병 끝 별세</a></li>
+        <li><a href="#" title="">경북 구미 고속도로서 연쇄추돌‥2명 사망</a></li>
+        <li><a href="#" title="">[단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심부름한 사람이었다"</a></li>
+        <li><a href="#" title="">[와글와글] "네가 왜 거기서 나와"‥ 대형 쇼핑몰 5층에 '경찰서'?</a></li>
+        <li><a href="#" title="">전주 얼굴없는 천사‥ 23년간 8억 8천여만 원 기부</a></li>
+        <li><a href="#" title="">마침내 달 품은 '다누리'‥우려 씻어낸 완벽한 성공</a></li>
+        <li><a href="#" title="">'주거침입 혐의' 더탐사 대표 구속영장 기각</a></li>
+      </ul>
+    </div>
+
+    <div class="tap_box" id="tb_ytb">
+      <ul>
+        <li><a href="#" title="">오늘 새벽 또 무인기 소동‥굉음에 놀라 '깜짝'</a></li>
+        <li><a href="#" title="">[뉴스외전 경제 '쏙'] '1/4 토막' 테슬라의 몰락‥"고양이 밥도 못 맡긴다"</a></li>
+        <li><a href="#" title="">"차 두고 뛰쳐나와" 순식간에 번진 불길에 '필사의 탈출'</a></li>
+        <li><a href="#" title="">[와글와글] "네가 왜 거기서 나와"‥ 대형 쇼핑몰 5층에 '경찰서'?</a></li>
+        <li><a href="#" title="">'비밀 경찰서' 의심 중식당 "추악한 세력 폭로하겠다"</a></li>
+        <li><a href="#" title="">'비밀 경찰서' 지목 중식당 "오늘 폭로하겠다" 예고</a></li>
+        <li><a href="#" title="">"도대체 뭐한 거냐" 대통령 질책에 군 "억울하다" 볼멘소리도</a></li>
+        <li><a href="#" title="">[와글와글] "아무도 없다 훔치자!" 재해 틈탄 도둑들</a></li>
+        <li><a href="#" title="">"김정은이 남친인가?" 미국, 독일에서 인종차별 범죄 잇따라</a></li>
+        <li><a href="#" title="">[단독] 숨진 빌라왕 송 모 씨‥"일감 받아 심</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    function changeTap02(){
+      document.getElementById('open_potal').style.color='#f00';
+      document.getElementById('tb_potal').style.display='block';
+    }
+  </script>
+</body>
+</html>

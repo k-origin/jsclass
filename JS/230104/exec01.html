@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자바스크립트 문서객체모델_속성값을 활용한 상품 미리보기 콘텐츠</title>
+  
+  <style>
+    * {margin:0; padding:0;}
+    ul,li,ol{
+      list-style: none;
+    }
+
+    .product{
+      margin:20px 0 0 0;
+      display: flex;
+      width:1000px;
+    }
+
+    .photo{
+      text-align: center;
+      width:500px;
+    }
+
+    .photo > ul{
+      display: flex;
+      width: 400px;
+      margin: 0 auto;
+    }
+
+    .photo > ul > li {
+      margin:3px;
+    }
+
+    .photo > ul > li > img{
+      width:75px;
+      box-sizing: border-box;
+    }
+
+    .photo > ul > li:focus > img{
+      border: 1px solid #999;  
+    }
+
+    #big_img{
+      width:400px;
+    }
+
+    .photo{
+      width:500px;
+    }
+
+    h3{
+      line-height: 30px;
+      margin:10px 0;
+    }
+
+    h3 > span {
+      font-size:10px;
+      color: #ff4848;
+      
+    }
+
+    h3 > p {
+      font-size:16px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+    
+    p {
+      font-size: 30px;
+    }
+
+    p > a{
+      font-size: 14px;
+      text-decoration: none;
+      color:#000;
+    }
+
+    p > span {
+      color: #f00;
+    }
+
+    a[title=혜택보기]{
+      border: 1px solid #ccc;
+      padding: 3px 5px;
+      border-radius:5px;
+    }
+
+    .product > article:last-child > p:last-child {
+      margin:10px;
+      margin-top: 50px;
+    }
+
+    .product > article:last-child > p:last-child > a{
+      background-color: #e6e2e2;
+      font-size:12px;
+      line-height:40px;
+      text-align: center;
+      display: inline-block;
+      width:200px;
+      height: 40px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h2>자바스크립트 문서객체모델_속성값을 활용한 상품 미리보기 콘텐츠</h2>
+  <p>이미지 5장을 사용해 썸네일 이미지 클릭 시 큰 사진이 보이게 하기</p>
+
+  <section class="product">
+    <article class="photo">
+      <img src="./images2/photo01.jpg" alt="미리보기" id="big_img">
+      <!--썸네일 클릭 시 해당 속성 src 값을 변수에 담아 출력-->
+      <ul>
+        <li><img src="./images2/photo01.jpg" alt="썸네일" id="s_img" class="thum"></li>
+        <li><img src="./images2/photo02.jpg" alt="썸네일" id="s_img" class="thum"></li>
+        <li><img src="./images2/photo03.jpg" alt="썸네일" id="s_img" class="thum"></li>
+        <li><img src="./images2/photo04.jpg" alt="썸네일" id="s_img" class="thum"></li>
+        <li><img src="./images2/photo05.jpg" alt="썸네일" id="s_img" class="thum"></li>
+      </ul>
+    </article>
+
+    <article>
+      <h3><span>오늘 마감</span>
+        <p>[최대40%쿠폰] 머렐 헤비다운 외 스포츠 특가</p>
+      </h3>
+      <p><span>10%</span> 151,200원~ <a href="#" title="혜택보기">혜택보기</a></p>
+      <p>
+        <a href="#" title="적립금">구매 전 적립금 5,000원 받기</a>
+        <a href="#" title="무이자">카드 무이자 혜택 보기(최대 6개월)</a>
+      </p>
+    </article>
+  </section>
+
+  <script>
+    //큰사진 변수에 저장
+    let photo = document.querySelector('#big_img');
+
+    //작은 사진 변수에 저장
+    let s_img = document.querySelectorAll('.thum');
+
+    //반복문을 통해 목록 안에 이미지를 개별적으로 선택해 클릭 이벤트를 만든다
+    for(let i=0; i<s_img.length; i++){
+      //변수 i 초기값 0으로
+      // i가 .thum 개수만큼 반복 실행
+      //i++ 1씩 증가
+
+      console.log(s_img[i]) //출력하여 목록 확인
+      s_img[i].addEventListener('click', changePic); //이미지를 각각 클릭하면 해당 함수가 호출됨
+    }
+
+    function changePic(){ //이미지를 변경하는 함수
+      let newPic = this.src; //사용자가 선택한 이미지 속성을 변수에 저장
+      console.log(newPic); //이미지 src 값을 출력 확인
+      //src 값을 #big_img의 속성 값에 대입하여 이미지가 변경되도록 한다
+      photo.setAttribute('src', newPic);
+
+      for(let j=0; j<s_img.length;j++){
+
+      
+      s_img[j].style.border='none'; //모두 서식 제거
+      this.style.border='1px solid #f00'; //선택한 썸네일에 테두리 적용
+      }
+
+    }
+
+
+    // let thumimg = document.querySelectorAll('.product > .photo > ul > li');
+
+    // for(let i=0; i<=thumimg.length; i++){
+    //   thumimg[i].querySelector('.thum')
+    // }
+
+    // //썸네일 클릭 시 src 속성 가지고 오기
+    // let s = document.getElementById('s_img');
+    // let s_src = s.getAttribute('src');
+
+    // let b = document.getElementById('big_img')
+
+    // s.addEventListener('click', function(){
+    //   alert('함수확인');
+    //   console.log(s_src)
+    //   b.setAttribute('src', s_src);
+    // })
+
+
+    // let big = document.getElementById('big_img'); //속성 변하는 부분
+    // let s = document.getElementById('s_img'); //속성값 가지고 올 썸네일 이미지
+    // let s_src= s.getAttribute('src') //썸네일 src 가지고 오기
+    // console.log(s_src);
+
+    // s.addEventListener('click', function(){
+    //   this.getAttribute('src')
+    // })
+
+
+
+    // //썸클릭>썸src>big_img src 변경
+
+    //  //#bulb를 클릭 시 src 속성 값을 가져와서 출력해 보기
+
+    //  let b = document.getElementById('bulb');
+    // let img_src = b.getAttribute('src'); //src 속성 값을 가져와서 변수에 담기
+    // console.log(img_src); //출력
+
+    // b.addEventListener('click', function(){
+    //   this.setAttribute('src','./pic_bulbon.gif');
+    // });
+  </script>
+</body>
+</html>

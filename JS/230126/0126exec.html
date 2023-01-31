@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery_DOM_image_slide</title>
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <style>
+    * {margin:0; padding:0;}
+    ul, li, ol {list-style:none;}
+    a {color: #333; text-decoration: none;}
+    h2, p {padding: 10px;}
+
+    .banner{
+      width: 1200px;
+      height: 122px;
+      margin: 0 auto;
+      border: 3px solid #f00;
+    }
+
+    .banner > ul {
+      display: flex;
+      margin-left:-355px;
+    }
+
+  </style>
+
+  <script>
+    $(function(){
+      let mleft = -355;
+
+      function moveLeft(){
+        $('.banner ul').css('margin-left', mleft); //왼쪽으로 -355 만큼 이동
+        mleft -=2; //mleft= mleft-2 : -355, -357, -359, -361 ......
+
+        console.log(mleft);
+
+        //ul 태그의 위치가 770일 때 왼쪽 첫번째 li 태그를 오른쪽 끝으로 자리 배치
+        if(mleft==-357){
+          $('.banner ul li:first-child').insertAfter('.banner ul li:last-child');
+        }else if(mleft==-711){
+          mleft=-355;
+        }
+        
+        
+      }
+
+      let Timer = setInterval(moveLeft, 20);
+
+
+      $('.banner ul').hover(function(){
+        clearInterval(Timer);
+      }, function(){
+        clearInterval(Timer);
+        Timer = setInterval(moveLeft, 20);
+      });
+    });
+  </script>
+</head>
+<body>
+  <h2>jQuery_DOM_image_slide</h2>
+  <p>7장의 이미지를 사용하여 왼쪽으로 슬라이드 되는 애니메이션 구현하기</p>
+
+  <article class="banner">
+    <ul>
+      <li><a href="#" title=""><img src="./images02/seoul1.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images02/seoul2.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images02/seoul3.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images02/seoul4.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images02/seoul5.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images02/seoul6.jpg" alt=""></a></li>
+      <li><a href="#" title=""><img src="./images02/seoul7.jpg" alt=""></a></li>
+    </ul>
+
+  </article>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쿠팡 예제</title>
+
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+  <style>
+    h3 {display:none;}
+    .banner {
+        width: 1600px;
+        border: 3px solid #000;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+
+      .banner * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .banner img {
+        display: block;
+      }
+
+      .banner div img{
+        width: 100%;
+      }
+
+      .banner nav {
+        /* background: rgba(255, 255, 255, 0.8); */
+        position: absolute;
+        right: 50px;
+        top: 5px;
+        box-sizing: border-box;
+      }
+
+      .banner nav ul {
+        list-style: none;
+        box-sizing: border-box;
+      }
+
+      .banner nav li {
+        padding: 0px 0px;
+        box-sizing: border-box;
+      }
+
+      .banner nav a {
+        box-sizing: border-box;
+      }
+
+      .banner nav a img{
+        box-sizing: border-box;
+      }
+
+      /* .on {
+        border: 1px solid #00f;
+      } */
+
+  </style>
+
+  <script>
+    $(function(){    
+
+      $('.banner nav li a').mouseenter(function(){
+          
+          let url = $(this).attr('href'); //href 속성 값을 변수에 담기   
+          $('.banner div img').attr('src', url); //이미지 src 속성에 대입
+
+          $('.banner nav a img').css('border', 'none')
+          $('.banner nav a:hover img').css('border', '1px solid #00f');
+        });
+
+      function changeImage(){
+        
+      }
+
+    });
+  </script>
+
+</head>
+<body>
+  <article class="banner">
+    <h3>쿠팡 예제</h3>
+    <div>
+      <img src="./images03/cou1.jpg" alt="큰 이미지">
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="./images03/cou1.jpg" alt="배너1" class="on"><img src="./images03/cou1_1.jpg" alt="인기간식"></a></li>
+        <li><a href="./images03/cou2.jpg" alt="배너2"><img src="./images03/cou2_1.png" alt="직수입신년빅세일"></a></li>
+        <li><a href="./images03/cou3.jpg" alt="배너3"><img src="./images03/cou3_1.jpg" alt="바닐라코"></a></li>
+        <li><a href="./images03/cou4.jpg" alt="배너4"><img src="./images03/cou4_1.jpg" alt="프렌치카페"></a></li>
+        <li><a href="./images03/cou5.png" alt="배너5"><img src="./images03/cou5_1.png" alt="생필품쟁여두기"></a></li>
+        <li><a href="./images03/cou6.jpg" alt="배너6"><img src="./images03/cou6_1.png" alt="설연휴끝특가"></a></li>
+      </ul>
+    </nav>
+  </article>
+
+</body>
+</html>
