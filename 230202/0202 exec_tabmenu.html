@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>실습예제_탭메뉴</title>
+
+  <style>
+    * {margin:0; padding:0;}
+    ul, li, ol {list-style: none;}
+    h2{display: none;}
+    a {
+      text-decoration: none;
+      color: #333;
+      display: block;
+      font-weight: bold;
+    }
+    body{
+      font-family: '맑은 고딕', arial, sans-serif;
+      color: #333;
+    }
+
+    .tab_menu{
+      width: 1000px;
+      margin: 10px;
+      position: relative;
+    }
+    
+    ul {
+      display: flex;
+    }
+
+    .tab_menu > ul > li {
+      width: 20%;
+      height: 50px;
+      text-align: center;
+    }
+
+    .tab_menu > ul > li > a{
+      padding: 5px;
+    }
+
+    .tab_menu > ul > li > a > img{
+      display: block;
+      margin: 5px auto;
+      width: 50px;
+      height: 50px;
+    }
+
+    .tab {
+      position: absolute;
+      left:0;
+      top: 90px;
+    }
+
+    .tab > img{
+      width: 100%;
+    }
+
+    .on {
+      background-color: #ec6e07fa;
+      color: #fff;
+    }
+
+    div:not(.t01){
+      display: none;
+    }
+
+    
+
+  </style>
+
+  <!-- 제이쿼리 라이브러리 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  
+  <script>
+    $(function(){
+      //1. 변수 선언
+      let tab_menu = $('.tab_menu ul li a');
+      tab_menu.click(function(){
+        //메뉴 클릭 시 글씨 색 변경, 화면 변경
+        $(this).addClass('on').parent().siblings().find('a').removeClass('on');
+        $(this).next().show().parent().siblings().find('div').hide();
+
+        //메뉴 클릭 시 아이콘 색상 변경
+        if($(this).hasClass('on')==true){
+          let onoff = $(this).children().attr('src');
+          //console.log(onoff); //테스트하기
+          
+          //onoff 뒷부분 off.png > on.png 변경.. 
+          onoff = onoff.replace('off', 'on');
+          //console.log(onoff);
+          $(this).children().attr('src',onoff);
+        }
+
+        //선택 하지 않은 메뉴탭 원래대로 돌리기
+        tab_menu.each(function(){
+          if($(this).hasClass('on')==false){
+            let onoff = $(this).children().attr('src');
+            onoff = onoff.replace('_on', '_off');
+            $(this).children().attr('src',onoff);
+          }
+        });
+
+        return false;
+      });
+
+      
+    });
+  </script>
+</head>
+<body>
+  <article class="tab_menu">
+    <h2>탭메뉴 실습예제</h2>
+    <ul>
+      <li>
+        <a href="#" title="테마여행" class="on"><img src="./img/ico_theme_zone_1_on.png">테마여행</a>
+        <div class="tab t01">
+          <img src="./img/01.jpg" alt="테마여행">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="추천일정"><img src="./img/ico_theme_zone_2_off.png">추천일정</a>
+        <div class="tab t02">
+          <img src="./img/02.jpg" alt="추천일정">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="스크린속제주"><img src="./img/ico_theme_zone_3_off.png">스크린속제주</a>
+        <div class="tab t03">
+          <img src="./img/03.jpg" alt="스크린속제주">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="교통정보"><img src="./img/ico_theme_zone_4_off.png">교통정보</a>
+        <div class="tab t04">
+          <img src="./img/04.jpg" alt="교통정보">
+        </div>
+      </li>
+
+      <li>
+        <a href="#" title="가이드"><img src="./img/ico_theme_zone_5_off.png">안전&middot;안심관광 가이드</a>
+        <div class="tab t05">
+          <img src="./img/05.jpg" alt="가이드">
+        </div>
+      </li>
+
+    </ul>
+  </article>
+</body>
+</html>
